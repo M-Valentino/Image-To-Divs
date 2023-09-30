@@ -87,11 +87,7 @@
         for (let x = 0; x < image.getWidth(); x++) {
           let elemDiv = document.createElement("div");
           // Generates the styling for the div with the background color set to the current pixel.
-          if (dotMatrix) {
-            elemDiv.style.cssText = `display: inline-block;background-color:rgb(${image.getIntComponent0(x, y)},${image.getIntComponent1(x, y)},${image.getIntComponent2(x, y)});width:${divSize}px;height:${divSize}px;border-radius: ${divSize / 2}px`;
-          } else {
-            elemDiv.style.cssText = `display: inline-block;background-color:rgb(${image.getIntComponent0(x, y)},${image.getIntComponent1(x, y)},${image.getIntComponent2(x, y)});width:${divSize}px;height:${divSize}px;`;
-          }
+          elemDiv.style.cssText = `display: inline-block;background-color:rgb(${image.getIntComponent0(x, y)},${image.getIntComponent1(x, y)},${image.getIntComponent2(x, y)});width:${divSize}px;height:${divSize}px; ${dotMatrix ? `border-radius: ${divSize / 2}px` : ''}`;
           document.getElementById("gridContainer").appendChild(elemDiv);
         }
       }
@@ -107,7 +103,8 @@
     tiny square div is created with a background color equal to that pixel's color. All divs are put inside a root div
     that displays all of them in a grid.
   </p>
-  <p class="helperText">Note: The conversion for large images is slow. Also, Chrome has a bug where it displays the code result as
+  <p class="helperText">Note: The conversion for large images is slow. Also, Chrome has a bug where it displays the code
+    result as
     invisible, but you can still select and copy it.</p>
   <h2>Uploaded File</h2>
   <input id="upload" type="file" autocomplete=off />
